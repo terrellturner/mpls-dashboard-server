@@ -1,3 +1,5 @@
+import { log } from "console";
+
 const policeIncidents = async (): Promise<number> => {
   const incidentsWhereClause = `reportedDate >= CURRENT_TIMESTAMP - INTERVAL '7' DAY`;
 
@@ -11,7 +13,7 @@ const policeIncidents = async (): Promise<number> => {
   const res = fetch(interpolatedUrl)
     .then((res) => res.json())
     .then((data) => {
-      return data.length;
+      return data.features.length;
     });
 
   const amtOfReports = res;
