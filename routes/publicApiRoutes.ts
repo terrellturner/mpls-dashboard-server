@@ -1,8 +1,8 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
+import TotalCrimes from "../controllers/statsController";
+
 const router = express.Router();
 
-router.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Public API info inbound!");
-});
+router.route("/").get(TotalCrimes);
 
 export default router;
