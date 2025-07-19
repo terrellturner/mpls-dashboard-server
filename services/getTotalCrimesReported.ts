@@ -1,7 +1,7 @@
-const PoliceIncidents = async (): Promise<number> => {
-  const incidentsWhereClause = `reportedDate >= CURRENT_TIMESTAMP - INTERVAL '7' DAY`;
+const CrimesReported = async (): Promise<number> => {
+  const incidentsWhereClause = `Reported_Date >= CURRENT_TIMESTAMP - INTERVAL '7' DAY`;
 
-  const baseUrl = `https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Police_Incidents_${new Date().getFullYear()}/FeatureServer/0/query`;
+  const baseUrl = `https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Crime_Data/FeatureServer/0/query`;
 
   const interpolatedUrl = `${baseUrl}?where=${encodeURIComponent(
     incidentsWhereClause
@@ -20,4 +20,4 @@ const PoliceIncidents = async (): Promise<number> => {
   return amtOfReports;
 };
 
-export default PoliceIncidents;
+export default CrimesReported;
