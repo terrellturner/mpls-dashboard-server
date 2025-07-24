@@ -1,5 +1,3 @@
-import { log } from "console";
-
 const NonEmergencyIncidents = async (): Promise<number> => {
   const incidentsWhereClause = `OPENEDDATETIME >= CURRENT_TIMESTAMP - INTERVAL '7' DAY`;
 
@@ -11,7 +9,7 @@ const NonEmergencyIncidents = async (): Promise<number> => {
 
   console.log(interpolatedUrl);
 
-  const res = fetch(interpolatedUrl)
+  const res = await fetch(interpolatedUrl)
     .then((res) => res.json())
     .then((data) => {
       return data;

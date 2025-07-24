@@ -1,0 +1,22 @@
+const ConfirmedFiresReported = async (): Promise<number> => {
+  const incidentsWhereClause = `StartDate >= CURRENT_TIMESTAMP - INTERVAL '7' DAY`;
+
+  const baseUrl = `https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Fires_Confirmed_${new Date().getFullYear()}/FeatureServer/0/query`;
+  const interpolatedUrl = `${baseUrl}?where=${encodeURIComponent(
+    incidentsWhereClause
+  )}&returnCountOnly=true&f=json`;
+
+  console.log(interpolatedUrl);
+
+  const res = await fetch(interpolatedUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    });
+
+  const confirmedFires = res;
+
+  return confirmedFires;
+};
+
+export default ConfirmedFiresReported;

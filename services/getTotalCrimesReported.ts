@@ -9,7 +9,7 @@ const CrimesReported = async (): Promise<number> => {
 
   console.log(interpolatedUrl);
 
-  const res = fetch(interpolatedUrl)
+  const res = await fetch(interpolatedUrl)
     .then((res) => res.json())
     .then((data) => {
       return data;
